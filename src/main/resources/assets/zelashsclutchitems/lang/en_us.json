@@ -1,0 +1,13 @@
+{
+  "itemGroup.zelashsclutchitems": "Example Mod Tab",
+  "block.zelashsclutchitems.example_block": "Example Block",
+  "item.zelashsclutchitems.example_item": "Example Item",
+
+  "zelashsclutchitems.configuration.title": "Zelash's Clutch Items Configs",
+  "zelashsclutchitems.configuration.section.zelashsclutchitems.common.toml": "Zelash's Clutch Items Configs",
+  "zelashsclutchitems.configuration.section.zelashsclutchitems.common.toml.title": "Zelash's Clutch Items Configs",
+  "zelashsclutchitems.configuration.items": "Item List",
+  "zelashsclutchitems.configuration.logDirtBlock": "Log Dirt Block",
+  "zelashsclutchitems.configuration.magicNumberIntroduction": "Magic Number Text",
+  "zelashsclutchitems.configuration.magicNumber": "Magic Number"
+}
