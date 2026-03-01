@@ -1,10 +1,4 @@
 {
-  "item.zelashsclutchitems.stone_hammer": "Stone Hammer",
-  "item.zelashsclutchitems.iron_hammer": "Iron Hammer",
-  "item.zelashsclutchitems.golden_hammer": "Golden Hammer",
-  "item.zelashsclutchitems.diamond_hammer": "Diamond Hammer",
-  "item.zelashsclutchitems.netherite_hammer": "Netherite Hammer",
-
   "zelashsclutchitems.configuration.title": "Zelash's Clutch Items Configs",
   "zelashsclutchitems.configuration.section.zelashsclutchitems.common.toml": "Zelash's Clutch Items Configs",
   "zelashsclutchitems.configuration.section.zelashsclutchitems.common.toml.title": "Zelash's Clutch Items Configs",
@@ -12,6 +6,14 @@
   "zelashsclutchitems.configuration.logDirtBlock": "Log Dirt Block",
   "zelashsclutchitems.configuration.magicNumberIntroduction": "Magic Number Text",
   "zelashsclutchitems.configuration.magicNumber": "Magic Number",
+  
+  "creativetab.zelashsclutchitems.tab": "Zelash's Clutch Items",
+
+  "item.zelashsclutchitems.stone_hammer": "Stone Hammer",
+  "item.zelashsclutchitems.iron_hammer": "Iron Hammer",
+  "item.zelashsclutchitems.golden_hammer": "Golden Hammer",
+  "item.zelashsclutchitems.diamond_hammer": "Diamond Hammer",
+  "item.zelashsclutchitems.netherite_hammer": "Netherite Hammer",
 
   "message.zelashsclutchitems.hammer_area_changed": "Hammer area changed to %s"
 }

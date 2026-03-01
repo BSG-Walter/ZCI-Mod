@@ -1,5 +1,6 @@
 package com.zelash.zelashsclutchitems;
 
+import com.zelash.zelashsclutchitems.item.ModCreativeTabs;
 import com.zelash.zelashsclutchitems.item.ModItems;
 import org.slf4j.Logger;
 
@@ -48,8 +49,7 @@ public class ZelashsClutchItems {
         NeoForge.EVENT_BUS.register(this);
 
         ModItems.register(modEventBus);
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
+        ModCreativeTabs.register(modEventBus);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -66,17 +66,6 @@ public class ZelashsClutchItems {
         LOGGER.info("{}{}", Config.MAGIC_NUMBER_INTRODUCTION.get(), Config.MAGIC_NUMBER.getAsInt());
 
         Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
-    }
-
-    // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
-            event.accept(ModItems.STONE_HAMMER);
-            event.accept(ModItems.IRON_HAMMER);
-            event.accept(ModItems.GOLDEN_HAMMER);
-            event.accept(ModItems.DIAMOND_HAMMER);
-            event.accept(ModItems.NETHERITE_HAMMER);
-        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "zelashsclutchitems:stone_hammer",
+    "zelashsclutchitems:iron_hammer",
+    "zelashsclutchitems:golden_hammer",
+    "zelashsclutchitems:diamond_hammer",
+    "zelashsclutchitems:netherite_hammer"
+  ]
+}
