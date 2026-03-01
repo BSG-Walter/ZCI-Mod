@@ -1,5 +1,6 @@
 package com.zelash.zelashsclutchitems.item;
 
+import com.zelash.zelashsclutchitems.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -18,20 +19,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HammerItem extends PickaxeItem {
-    private final int radius;
 
     public HammerItem(Tier tier) {
         super(tier, new Item.Properties().attributes(PickaxeItem.createAttributes(tier, 6.0F, -3.3F)));
-        this.radius = 1;
     }
 
-    public HammerItem(Tier tier, Properties properties, int radius) {
+    public HammerItem(Tier tier, Properties properties) {
         super(tier, properties);
-        this.radius = radius;
     }
 
-    public int getRadius() {
-        return radius;
+    private static final java.util.Map<java.util.UUID, Integer> PLAYER_RADII = new java.util.concurrent.ConcurrentHashMap<>();
+
+    public static int getRadius(Player player) {
+        return PLAYER_RADII.getOrDefault(player.getUUID(), 1); // Default 3x3
+    }
+
+    @Override
+    public net.minecraft.world.InteractionResultHolder<ItemStack> use(Level level, Player player, net.minecraft.world.InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        if (player.isCrouching() && !level.isClientSide) {
+            int currentRadius = getRadius(player);
+            int newRadius = currentRadius + 1;
+            if (newRadius > 3) {
+                newRadius = 1; // Loop back to 3x3
+            }
+            
+            PLAYER_RADII.put(player.getUUID(), newRadius);
+            
+            String area = (newRadius * 2 + 1) + "x" + (newRadius * 2 + 1);
+            Utils.logDebug("Hammer area changed for player " + player.getName().getString() + " to " + area);
+            player.displayClientMessage(net.minecraft.network.chat.Component.translatable("message.zelashsclutchitems.hammer_area_changed", area), true);
+            
+            return net.minecraft.world.InteractionResultHolder.success(stack);
+        }
+        return super.use(level, player, hand);
     }
 
     @Override
@@ -43,7 +64,7 @@ public class HammerItem extends PickaxeItem {
                 if (trace.getType() == HitResult.Type.BLOCK) {
                     BlockHitResult blockTrace = (BlockHitResult) trace;
                     Direction face = blockTrace.getDirection();
-                    breakArea(player, level, pos, face, stack, radius);
+                    breakArea(player, level, pos, face, stack, getRadius(player));
                 }
             }
         }
@@ -104,5 +125,9 @@ public class HammerItem extends PickaxeItem {
             }
         }
         return positions;
+    }
+
+    public static List<BlockPos> getBlocksToBeDestroyed(BlockPos centerPos, ServerPlayer player) {
+        return getBlocksToBeDestroyed(getRadius(player), centerPos, player);
     }
 }

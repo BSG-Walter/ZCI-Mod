@@ -31,7 +31,7 @@ public class ClientModEvents {
                 if (hitResult.getType() == HitResult.Type.BLOCK) {
                     BlockHitResult blockHitResult = (BlockHitResult) hitResult;
                     BlockPos centerPos = blockHitResult.getBlockPos();
-                    int radius = hammer.getRadius();
+                    int radius = HammerItem.getRadius(player);
                     
                     // We can't cast player to ServerPlayer in client side cleanly, so we re-implement the logic for client side.
                     net.minecraft.core.Direction face = blockHitResult.getDirection();

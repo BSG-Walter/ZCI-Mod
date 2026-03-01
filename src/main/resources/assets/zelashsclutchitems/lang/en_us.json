@@ -11,5 +11,7 @@
   "zelashsclutchitems.configuration.items": "Item List",
   "zelashsclutchitems.configuration.logDirtBlock": "Log Dirt Block",
   "zelashsclutchitems.configuration.magicNumberIntroduction": "Magic Number Text",
-  "zelashsclutchitems.configuration.magicNumber": "Magic Number"
+  "zelashsclutchitems.configuration.magicNumber": "Magic Number",
+
+  "message.zelashsclutchitems.hammer_area_changed": "Hammer area changed to %s"
 }
