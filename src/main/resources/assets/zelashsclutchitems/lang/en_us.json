@@ -1,7 +1,6 @@
 {
-  "itemGroup.zelashsclutchitems": "Example Mod Tab",
-  "block.zelashsclutchitems.example_block": "Example Block",
-  "item.zelashsclutchitems.example_item": "Example Item",
+  "item.zelashsclutchitems.stone_hammer": "Stone Hammer",
+  "item.zelashsclutchitems.iron_hammer": "Iron Hammer",
 
   "zelashsclutchitems.configuration.title": "Zelash's Clutch Items Configs",
   "zelashsclutchitems.configuration.section.zelashsclutchitems.common.toml": "Zelash's Clutch Items Configs",
