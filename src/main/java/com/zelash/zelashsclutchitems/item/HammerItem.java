@@ -5,6 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.Tier;
@@ -18,6 +19,11 @@ import java.util.List;
 
 public class HammerItem extends PickaxeItem {
     private final int radius;
+
+    public HammerItem(Tier tier) {
+        super(tier, new Item.Properties().attributes(PickaxeItem.createAttributes(tier, 6.0F, -3.3F)));
+        this.radius = 1;
+    }
 
     public HammerItem(Tier tier, Properties properties, int radius) {
         super(tier, properties);
