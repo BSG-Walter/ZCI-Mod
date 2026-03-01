@@ -6,165 +6,52 @@ import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.SimpleTier;
 
 public class ModTiers {
-    public static final Tier STONE_HAMMER_TIER = new Tier() {
-        @Override
-        public int getUses() {
-            return 400;
-        }
 
-        @Override
-        public float getSpeed() {
-            return Tiers.STONE.getSpeed();
-        }
+    public static final Tier STONE_HAMMER_TIER = new SimpleTier(
+            Tiers.STONE.getIncorrectBlocksForDrops(),
+            400,
+            Tiers.STONE.getSpeed(),
+            Tiers.STONE.getAttackDamageBonus(),
+            Tiers.STONE.getEnchantmentValue(),
+            () -> Tiers.STONE.getRepairIngredient()
+    );
 
-        @Override
-        public float getAttackDamageBonus() {
-            return Tiers.STONE.getAttackDamageBonus();
-        }
+    public static final Tier IRON_HAMMER_TIER = new SimpleTier(
+            Tiers.IRON.getIncorrectBlocksForDrops(),
+            800,
+            Tiers.IRON.getSpeed(),
+            Tiers.IRON.getAttackDamageBonus(),
+            Tiers.IRON.getEnchantmentValue(),
+            () -> Tiers.IRON.getRepairIngredient()
+    );
 
-        @Override
-        public TagKey<Block> getIncorrectBlocksForDrops() {
-            return Tiers.STONE.getIncorrectBlocksForDrops();
-        }
+    public static final Tier GOLD_HAMMER_TIER = new SimpleTier(
+            Tiers.GOLD.getIncorrectBlocksForDrops(),
+            100,
+            Tiers.GOLD.getSpeed(),
+            Tiers.GOLD.getAttackDamageBonus(),
+            Tiers.GOLD.getEnchantmentValue(),
+            () -> Tiers.GOLD.getRepairIngredient()
+    );
 
-        @Override
-        public int getEnchantmentValue() {
-            return Tiers.STONE.getEnchantmentValue();
-        }
+    public static final Tier DIAMOND_HAMMER_TIER = new SimpleTier(
+            Tiers.DIAMOND.getIncorrectBlocksForDrops(),
+            3500,
+            Tiers.DIAMOND.getSpeed(),
+            Tiers.DIAMOND.getAttackDamageBonus(),
+            Tiers.DIAMOND.getEnchantmentValue(),
+            () -> Tiers.DIAMOND.getRepairIngredient()
+    );
 
-        @Override
-        public Ingredient getRepairIngredient() {
-            return Tiers.STONE.getRepairIngredient();
-        }
-    };
-
-    public static final Tier IRON_HAMMER_TIER = new Tier() {
-        @Override
-        public int getUses() {
-            return 800;
-        }
-
-        @Override
-        public float getSpeed() {
-            return Tiers.IRON.getSpeed();
-        }
-
-        @Override
-        public float getAttackDamageBonus() {
-            return Tiers.IRON.getAttackDamageBonus();
-        }
-
-        @Override
-        public TagKey<Block> getIncorrectBlocksForDrops() {
-            return Tiers.IRON.getIncorrectBlocksForDrops();
-        }
-
-        @Override
-        public int getEnchantmentValue() {
-            return Tiers.IRON.getEnchantmentValue();
-        }
-
-        @Override
-        public Ingredient getRepairIngredient() {
-            return Tiers.IRON.getRepairIngredient();
-        }
-    };
-
-    public static final Tier GOLD_HAMMER_TIER = new Tier() {
-        @Override
-        public int getUses() {
-            return 100;
-        }
-
-        @Override
-        public float getSpeed() {
-            return Tiers.GOLD.getSpeed();
-        }
-
-        @Override
-        public float getAttackDamageBonus() {
-            return Tiers.GOLD.getAttackDamageBonus();
-        }
-
-        @Override
-        public TagKey<Block> getIncorrectBlocksForDrops() {
-            return Tiers.GOLD.getIncorrectBlocksForDrops();
-        }
-
-        @Override
-        public int getEnchantmentValue() {
-            return Tiers.GOLD.getEnchantmentValue();
-        }
-
-        @Override
-        public Ingredient getRepairIngredient() {
-            return Tiers.GOLD.getRepairIngredient();
-        }
-    };
-
-    public static final Tier DIAMOND_HAMMER_TIER = new Tier() {
-        @Override
-        public int getUses() {
-            return 3500;
-        }
-
-        @Override
-        public float getSpeed() {
-            return Tiers.DIAMOND.getSpeed();
-        }
-
-        @Override
-        public float getAttackDamageBonus() {
-            return Tiers.DIAMOND.getAttackDamageBonus();
-        }
-
-        @Override
-        public TagKey<Block> getIncorrectBlocksForDrops() {
-            return Tiers.DIAMOND.getIncorrectBlocksForDrops();
-        }
-
-        @Override
-        public int getEnchantmentValue() {
-            return Tiers.DIAMOND.getEnchantmentValue();
-        }
-
-        @Override
-        public Ingredient getRepairIngredient() {
-            return Tiers.DIAMOND.getRepairIngredient();
-        }
-    };
-
-    public static final Tier NETHERITE_HAMMER_TIER = new Tier() {
-        @Override
-        public int getUses() {
-            return 6000;
-        }
-
-        @Override
-        public float getSpeed() {
-            return Tiers.NETHERITE.getSpeed();
-        }
-
-        @Override
-        public float getAttackDamageBonus() {
-            return Tiers.NETHERITE.getAttackDamageBonus();
-        }
-
-        @Override
-        public TagKey<Block> getIncorrectBlocksForDrops() {
-            return Tiers.NETHERITE.getIncorrectBlocksForDrops();
-        }
-
-        @Override
-        public int getEnchantmentValue() {
-            return Tiers.NETHERITE.getEnchantmentValue();
-        }
-
-        @Override
-        public Ingredient getRepairIngredient() {
-            return Tiers.NETHERITE.getRepairIngredient();
-        }
-    };
+    public static final Tier NETHERITE_HAMMER_TIER = new SimpleTier(
+            Tiers.NETHERITE.getIncorrectBlocksForDrops(),
+            6000,
+            Tiers.NETHERITE.getSpeed(),
+            Tiers.NETHERITE.getAttackDamageBonus(),
+            Tiers.NETHERITE.getEnchantmentValue(),
+            () -> Tiers.NETHERITE.getRepairIngredient()
+    );
 }
