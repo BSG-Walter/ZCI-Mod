@@ -11,14 +11,25 @@ public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ZelashsClutchItems.MODID);
 
     public static final DeferredItem<Item> STONE_HAMMER = ITEMS.register("stone_hammer",
-            ()-> new HammerItem(net.minecraft.world.item.Tiers.STONE, new Item.Properties()
-            .attributes(PickaxeItem.createAttributes(net.minecraft.world.item.Tiers.STONE, 7.0F, -3.1F))
-            .durability(400)
+            ()-> new HammerItem(ModTiers.STONE_HAMMER_TIER, new Item.Properties()
+            .attributes(PickaxeItem.createAttributes(ModTiers.STONE_HAMMER_TIER, 6.0F, -3.3F))
             , 1));
     public static final DeferredItem<Item> IRON_HAMMER = ITEMS.register("iron_hammer",
-            ()-> new HammerItem(net.minecraft.world.item.Tiers.IRON, new Item.Properties()
-            .attributes(PickaxeItem.createAttributes(net.minecraft.world.item.Tiers.IRON, 7.0F, -3.1F))
-            .durability(800)
+            ()-> new HammerItem(ModTiers.IRON_HAMMER_TIER, new Item.Properties()
+            .attributes(PickaxeItem.createAttributes(ModTiers.IRON_HAMMER_TIER, 6.0F, -3.3F))
+            , 1));
+    public static final DeferredItem<Item> GOLDEN_HAMMER = ITEMS.register("golden_hammer",
+            ()-> new HammerItem(ModTiers.GOLD_HAMMER_TIER, new Item.Properties()
+            .attributes(PickaxeItem.createAttributes(ModTiers.GOLD_HAMMER_TIER, 6.0F, -3.3F))
+            , 1));
+    public static final DeferredItem<Item> DIAMOND_HAMMER = ITEMS.register("diamond_hammer",
+            ()-> new HammerItem(ModTiers.DIAMOND_HAMMER_TIER, new Item.Properties()
+            .attributes(PickaxeItem.createAttributes(ModTiers.DIAMOND_HAMMER_TIER, 6.0F, -3.3F))
+            , 1));
+    public static final DeferredItem<Item> NETHERITE_HAMMER = ITEMS.register("netherite_hammer",
+            ()-> new HammerItem(ModTiers.NETHERITE_HAMMER_TIER, new Item.Properties()
+            .attributes(PickaxeItem.createAttributes(ModTiers.NETHERITE_HAMMER_TIER, 6.0F, -3.3F))
+            .fireResistant()
             , 1));
     public static void register (IEventBus eventBus){
         ITEMS.register(eventBus);

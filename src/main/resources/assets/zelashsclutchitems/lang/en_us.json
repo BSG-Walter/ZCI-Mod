@@ -1,6 +1,9 @@
 {
   "item.zelashsclutchitems.stone_hammer": "Stone Hammer",
   "item.zelashsclutchitems.iron_hammer": "Iron Hammer",
+  "item.zelashsclutchitems.golden_hammer": "Golden Hammer",
+  "item.zelashsclutchitems.diamond_hammer": "Diamond Hammer",
+  "item.zelashsclutchitems.netherite_hammer": "Netherite Hammer",
 
   "zelashsclutchitems.configuration.title": "Zelash's Clutch Items Configs",
   "zelashsclutchitems.configuration.section.zelashsclutchitems.common.toml": "Zelash's Clutch Items Configs",
