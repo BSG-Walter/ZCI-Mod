@@ -12,7 +12,7 @@ public class ModTiers {
 
     public static final Tier STONE_HAMMER_TIER = new SimpleTier(
             Tiers.STONE.getIncorrectBlocksForDrops(),
-            400,
+            325,
             Tiers.STONE.getSpeed(),
             Tiers.STONE.getAttackDamageBonus(),
             Tiers.STONE.getEnchantmentValue(),
@@ -21,7 +21,7 @@ public class ModTiers {
 
     public static final Tier IRON_HAMMER_TIER = new SimpleTier(
             Tiers.IRON.getIncorrectBlocksForDrops(),
-            800,
+            625,
             Tiers.IRON.getSpeed(),
             Tiers.IRON.getAttackDamageBonus(),
             Tiers.IRON.getEnchantmentValue(),
@@ -39,7 +39,7 @@ public class ModTiers {
 
     public static final Tier DIAMOND_HAMMER_TIER = new SimpleTier(
             Tiers.DIAMOND.getIncorrectBlocksForDrops(),
-            3500,
+            3900,
             Tiers.DIAMOND.getSpeed(),
             Tiers.DIAMOND.getAttackDamageBonus(),
             Tiers.DIAMOND.getEnchantmentValue(),
@@ -48,7 +48,7 @@ public class ModTiers {
 
     public static final Tier NETHERITE_HAMMER_TIER = new SimpleTier(
             Tiers.NETHERITE.getIncorrectBlocksForDrops(),
-            6000,
+            5000,
             Tiers.NETHERITE.getSpeed(),
             Tiers.NETHERITE.getAttackDamageBonus(),
             Tiers.NETHERITE.getEnchantmentValue(),
