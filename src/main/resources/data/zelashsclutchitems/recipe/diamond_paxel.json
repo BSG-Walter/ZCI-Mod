@@ -7,13 +7,25 @@
     ],
     "key": {
         "A": {
-            "item": "minecraft:diamond_axe"
+            "type": "neoforge:components",
+            "items": "minecraft:diamond_axe",
+            "components": {
+                "minecraft:damage": 0
+            }
         },
         "S": {
-            "item": "minecraft:diamond_shovel"
+            "type": "neoforge:components",
+            "items": "minecraft:diamond_shovel",
+            "components": {
+                "minecraft:damage": 0
+            }
         },
         "P": {
-            "item": "minecraft:diamond_pickaxe"
+            "type": "neoforge:components",
+            "items": "minecraft:diamond_pickaxe",
+            "components": {
+                "minecraft:damage": 0
+            }
         },
         "T": {
             "item": "minecraft:stick"

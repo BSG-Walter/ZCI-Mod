@@ -7,13 +7,25 @@
     ],
     "key": {
         "A": {
-            "item": "minecraft:netherite_axe"
+            "type": "neoforge:components",
+            "items": "minecraft:netherite_axe",
+            "components": {
+                "minecraft:damage": 0
+            }
         },
         "S": {
-            "item": "minecraft:netherite_shovel"
+            "type": "neoforge:components",
+            "items": "minecraft:netherite_shovel",
+            "components": {
+                "minecraft:damage": 0
+            }
         },
         "P": {
-            "item": "minecraft:netherite_pickaxe"
+            "type": "neoforge:components",
+            "items": "minecraft:netherite_pickaxe",
+            "components": {
+                "minecraft:damage": 0
+            }
         },
         "T": {
             "item": "minecraft:stick"

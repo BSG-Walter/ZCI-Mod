@@ -7,13 +7,25 @@
     ],
     "key": {
         "A": {
-            "item": "minecraft:iron_axe"
+            "type": "neoforge:components",
+            "items": "minecraft:iron_axe",
+            "components": {
+                "minecraft:damage": 0
+            }
         },
         "S": {
-            "item": "minecraft:iron_shovel"
+            "type": "neoforge:components",
+            "items": "minecraft:iron_shovel",
+            "components": {
+                "minecraft:damage": 0
+            }
         },
         "P": {
-            "item": "minecraft:iron_pickaxe"
+            "type": "neoforge:components",
+            "items": "minecraft:iron_pickaxe",
+            "components": {
+                "minecraft:damage": 0
+            }
         },
         "T": {
             "item": "minecraft:stick"

@@ -7,13 +7,25 @@
     ],
     "key": {
         "A": {
-            "item": "minecraft:stone_axe"
+            "type": "neoforge:components",
+            "items": "minecraft:stone_axe",
+            "components": {
+                "minecraft:damage": 0
+            }
         },
         "S": {
-            "item": "minecraft:stone_shovel"
+            "type": "neoforge:components",
+            "items": "minecraft:stone_shovel",
+            "components": {
+                "minecraft:damage": 0
+            }
         },
         "P": {
-            "item": "minecraft:stone_pickaxe"
+            "type": "neoforge:components",
+            "items": "minecraft:stone_pickaxe",
+            "components": {
+                "minecraft:damage": 0
+            }
         },
         "T": {
             "item": "minecraft:stick"
