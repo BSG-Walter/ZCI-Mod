@@ -25,6 +25,7 @@ public class ModCreativeTabs {
                         output.accept(ModItems.DIAMOND_HAMMER.get());
                         output.accept(ModItems.NETHERITE_HAMMER.get());
                         output.accept(ModItems.XP_TOME.get());
+                        output.accept(ModItems.LARGE_XP_TOME.get());
                     })
                     .build()
     );

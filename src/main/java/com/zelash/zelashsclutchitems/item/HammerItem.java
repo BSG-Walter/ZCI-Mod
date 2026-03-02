@@ -17,6 +17,9 @@ import net.minecraft.world.phys.HitResult;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class HammerItem extends PickaxeItem {
 
@@ -28,7 +31,7 @@ public class HammerItem extends PickaxeItem {
         super(tier, properties);
     }
 
-    private static final java.util.Map<java.util.UUID, Integer> PLAYER_RADII = new java.util.concurrent.ConcurrentHashMap<>();
+    private static final Map<UUID, Integer> PLAYER_RADII = new ConcurrentHashMap<>();
 
     public static int getRadius(Player player) {
         return PLAYER_RADII.getOrDefault(player.getUUID(), 1); // Default 3x3

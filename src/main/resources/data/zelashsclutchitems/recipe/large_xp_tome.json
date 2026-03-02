@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "TTT",
+    "TTT",
+    "TTT"
+  ],
+  "key": {
+    "T": {
+      "item": "zelashsclutchitems:xp_tome"
+    }
+  },
+  "result": {
+    "id": "zelashsclutchitems:large_xp_tome",
+    "count": 1
+  }
+}

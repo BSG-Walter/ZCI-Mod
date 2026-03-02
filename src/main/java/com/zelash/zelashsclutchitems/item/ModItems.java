@@ -24,7 +24,9 @@ public class ModItems {
             .fireResistant()));
 
     public static final DeferredItem<Item> XP_TOME = ITEMS.register("xp_tome",
-            () -> new XPTomeItem(new Item.Properties().stacksTo(1)));
+            () -> new XPTomeItem(new Item.Properties().stacksTo(1), com.zelash.zelashsclutchitems.Config.XPTOME_MAX_XP));
+    public static final DeferredItem<Item> LARGE_XP_TOME = ITEMS.register("large_xp_tome",
+            () -> new XPTomeItem(new Item.Properties().stacksTo(1), com.zelash.zelashsclutchitems.Config.LARGE_XPTOME_MAX_XP));
 
     public static void register (IEventBus eventBus){
         ITEMS.register(eventBus);

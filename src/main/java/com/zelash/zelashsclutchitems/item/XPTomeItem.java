@@ -14,10 +14,14 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class XPTomeItem extends Item {
-    public XPTomeItem(Properties properties) {
+    protected final Supplier<Integer> maxCapacitySupplier;
+
+    public XPTomeItem(Properties properties, Supplier<Integer> maxCapacitySupplier) {
         super(properties);
+        this.maxCapacitySupplier = maxCapacitySupplier;
     }
 
     @Override
@@ -29,7 +33,7 @@ public class XPTomeItem extends Item {
 
             if (player.isCrouching()) {
                 // Store XP
-                int maxCapacity = Config.XPTOME_MAX_XP.get();
+                int maxCapacity = this.maxCapacitySupplier.get();
                 if (storedXp < maxCapacity && player.totalExperience > 0) {
                     int xpToStore = 0;
 
@@ -91,7 +95,7 @@ public class XPTomeItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         int storedXp = stack.getOrDefault(ModDataComponentTypes.STORED_XP, 0);
-        int maxCapacity = Config.XPTOME_MAX_XP.get();
+        int maxCapacity = this.maxCapacitySupplier.get();
         tooltipComponents.add(Component.translatable("tooltip.zelashsclutchitems.xp_tome.stored", storedXp, maxCapacity).withStyle(ChatFormatting.GREEN));
         tooltipComponents.add(Component.translatable("tooltip.zelashsclutchitems.xp_tome.store_instruction").withStyle(ChatFormatting.GRAY));
         tooltipComponents.add(Component.translatable("tooltip.zelashsclutchitems.xp_tome.retrieve_instruction").withStyle(ChatFormatting.GRAY));
@@ -105,7 +109,7 @@ public class XPTomeItem extends Item {
     @Override
     public int getBarWidth(ItemStack stack) {
         int storedXp = stack.getOrDefault(ModDataComponentTypes.STORED_XP, 0);
-        int maxCapacity = Config.XPTOME_MAX_XP.get();
+        int maxCapacity = this.maxCapacitySupplier.get();
         return Math.round(13.0F * storedXp / maxCapacity);
     }
 
