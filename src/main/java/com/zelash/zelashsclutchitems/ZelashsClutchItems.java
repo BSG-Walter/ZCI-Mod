@@ -1,6 +1,7 @@
 package com.zelash.zelashsclutchitems;
 
 import com.zelash.zelashsclutchitems.item.ModCreativeTabs;
+import com.zelash.zelashsclutchitems.item.ModDataComponentTypes;
 import com.zelash.zelashsclutchitems.item.ModItems;
 import org.slf4j.Logger;
 
@@ -49,6 +50,7 @@ public class ZelashsClutchItems {
         NeoForge.EVENT_BUS.register(this);
 
         ModItems.register(modEventBus);
+        ModDataComponentTypes.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us

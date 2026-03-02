@@ -38,6 +38,18 @@ public class Config {
             .comment("A list of items to log on common setup.")
             .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), () -> "", Config::validateItemName);
 
+    public static final ModConfigSpec.IntValue XPTOME_MAX_XP = BUILDER
+            .comment("Defines the total amount of experience points an XP Tome can store. Default is 1395, which equals exactly 30 experience levels.")
+            .defineInRange("xptome_max_xp", 1395, 1, Integer.MAX_VALUE);
+
+    public static final ModConfigSpec.DoubleValue XPTOME_RETRIEVAL_PERCENTAGE = BUILDER
+            .comment("Determines the return rate when extracting experience from the tome. For instance, a value of 0.75 means you get back 75% of the stored XP, effectively costing 25%. Values might not be perfectly exact due to how Minecraft handles XP.")
+            .defineInRange("xptome_retrieval_percentage", 1.0, 0.0, 1.0);
+
+    public static final ModConfigSpec.BooleanValue XPTOME_TRANSFER_ONE_LEVEL_AT_A_TIME = BUILDER
+            .comment("If enabled, depositing and retrieving XP will be done one level at a time, preventing you from storing or retrieving multiple levels at once.")
+            .define("xptome_transfer_one_level_at_a_time", true);
+
     static final ModConfigSpec SPEC = BUILDER.build();
 
     private static boolean validateItemName(final Object obj) {

@@ -14,6 +14,11 @@
   "item.zelashsclutchitems.golden_hammer": "Golden Hammer",
   "item.zelashsclutchitems.diamond_hammer": "Diamond Hammer",
   "item.zelashsclutchitems.netherite_hammer": "Netherite Hammer",
+  "item.zelashsclutchitems.xp_tome": "XP Tome",
 
-  "message.zelashsclutchitems.hammer_area_changed": "Hammer area changed to %s"
+  "message.zelashsclutchitems.hammer_area_changed": "Hammer area changed to %s",
+  
+  "tooltip.zelashsclutchitems.xp_tome.stored": "Stored XP: %d / %d",
+  "tooltip.zelashsclutchitems.xp_tome.store_instruction": "Sneak + Right Click to store XP",
+  "tooltip.zelashsclutchitems.xp_tome.retrieve_instruction": "Right Click to retrieve XP"
 }

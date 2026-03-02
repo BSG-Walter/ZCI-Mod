@@ -22,6 +22,10 @@ public class ModItems {
             ()-> new HammerItem(ModTiers.NETHERITE_HAMMER_TIER, new Item.Properties()
             .attributes(PickaxeItem.createAttributes(ModTiers.NETHERITE_HAMMER_TIER, 6.0F, -3.3F))
             .fireResistant()));
+
+    public static final DeferredItem<Item> XP_TOME = ITEMS.register("xp_tome",
+            () -> new XPTomeItem(new Item.Properties().stacksTo(1)));
+
     public static void register (IEventBus eventBus){
         ITEMS.register(eventBus);
     }
