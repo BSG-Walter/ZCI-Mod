@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ASP",
+        " T ",
+        " T "
+    ],
+    "key": {
+        "A": {
+            "item": "minecraft:diamond_axe"
+        },
+        "S": {
+            "item": "minecraft:diamond_shovel"
+        },
+        "P": {
+            "item": "minecraft:diamond_pickaxe"
+        },
+        "T": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "id": "zelashsclutchitems:diamond_paxel",
+        "count": 1
+    }
+}

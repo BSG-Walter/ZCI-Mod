@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ASP",
+        " T ",
+        " T "
+    ],
+    "key": {
+        "A": {
+            "item": "minecraft:netherite_axe"
+        },
+        "S": {
+            "item": "minecraft:netherite_shovel"
+        },
+        "P": {
+            "item": "minecraft:netherite_pickaxe"
+        },
+        "T": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "id": "zelashsclutchitems:netherite_paxel",
+        "count": 1
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ASP",
+        " T ",
+        " T "
+    ],
+    "key": {
+        "A": {
+            "item": "minecraft:iron_axe"
+        },
+        "S": {
+            "item": "minecraft:iron_shovel"
+        },
+        "P": {
+            "item": "minecraft:iron_pickaxe"
+        },
+        "T": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "id": "zelashsclutchitems:iron_paxel",
+        "count": 1
+    }
+}
