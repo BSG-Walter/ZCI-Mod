@@ -1,0 +1,38 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ASP",
+        " T ",
+        " T "
+    ],
+    "key": {
+        "A": {
+            "type": "neoforge:components",
+            "items": "minecraft:iron_axe",
+            "components": {
+                "minecraft:damage": 0
+            }
+        },
+        "S": {
+            "type": "neoforge:components",
+            "items": "minecraft:iron_shovel",
+            "components": {
+                "minecraft:damage": 0
+            }
+        },
+        "P": {
+            "type": "neoforge:components",
+            "items": "minecraft:iron_pickaxe",
+            "components": {
+                "minecraft:damage": 0
+            }
+        },
+        "T": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "id": "zelashsclutchitems:iron_paxel",
+        "count": 1
+    }
+}

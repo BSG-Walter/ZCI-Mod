@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "zelashsclutchitems:item/large_xp_tome"
+  }
+}

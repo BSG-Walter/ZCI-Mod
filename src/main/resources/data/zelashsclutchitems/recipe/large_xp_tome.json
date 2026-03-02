@@ -1,0 +1,17 @@
+{
+  "type": "zelashsclutchitems:xp_tome_crafting",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "zelashsclutchitems:xp_tome"
+    }
+  },
+  "result": {
+    "id": "zelashsclutchitems:large_xp_tome",
+    "count": 1
+  }
+}

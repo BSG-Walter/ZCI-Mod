@@ -2,11 +2,12 @@
   "zelashsclutchitems.configuration.title": "Zelash's Clutch Items Configs",
   "zelashsclutchitems.configuration.section.zelashsclutchitems.common.toml": "Zelash's Clutch Items Configs",
   "zelashsclutchitems.configuration.section.zelashsclutchitems.common.toml.title": "Zelash's Clutch Items Configs",
+
   "zelashsclutchitems.configuration.items": "Item List",
   "zelashsclutchitems.configuration.logDirtBlock": "Log Dirt Block",
   "zelashsclutchitems.configuration.magicNumberIntroduction": "Magic Number Text",
   "zelashsclutchitems.configuration.magicNumber": "Magic Number",
-  
+
   "creativetab.zelashsclutchitems.tab": "Zelash's Clutch Items",
 
   "item.zelashsclutchitems.stone_hammer": "Stone Hammer",
@@ -15,5 +16,18 @@
   "item.zelashsclutchitems.diamond_hammer": "Diamond Hammer",
   "item.zelashsclutchitems.netherite_hammer": "Netherite Hammer",
 
-  "message.zelashsclutchitems.hammer_area_changed": "Hammer area changed to %s"
+  "message.zelashsclutchitems.hammer_area_changed": "Hammer area changed to %s",
+
+  "item.zelashsclutchitems.xp_tome": "XP Tome",
+  "item.zelashsclutchitems.large_xp_tome": "Large XP Tome",
+
+  "tooltip.zelashsclutchitems.xp_tome.stored": "Stored XP: %d / %d",
+  "tooltip.zelashsclutchitems.xp_tome.store_instruction": "Sneak + Right Click to store XP",
+  "tooltip.zelashsclutchitems.xp_tome.retrieve_instruction": "Right Click to retrieve XP",
+
+  "item.zelashsclutchitems.stone_paxel": "Stone Paxel",
+  "item.zelashsclutchitems.iron_paxel": "Iron Paxel",
+  "item.zelashsclutchitems.golden_paxel": "Golden Paxel",
+  "item.zelashsclutchitems.diamond_paxel": "Diamond Paxel",
+  "item.zelashsclutchitems.netherite_paxel": "Netherite Paxel"
 }
