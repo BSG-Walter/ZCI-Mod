@@ -1,13 +1,12 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "equipment",
+  "type": "zelashsclutchitems:xp_tome_crafting",
   "pattern": [
-    "TTT",
-    "TTT",
-    "TTT"
+    "###",
+    "###",
+    "###"
   ],
   "key": {
-    "T": {
+    "#": {
       "item": "zelashsclutchitems:xp_tome"
     }
   },
