@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "zelashsclutchitems:item/netherite_hammer"
+  }
+}
