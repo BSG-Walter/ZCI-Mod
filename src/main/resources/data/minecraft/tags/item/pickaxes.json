@@ -5,6 +5,11 @@
     "zelashsclutchitems:iron_hammer",
     "zelashsclutchitems:golden_hammer",
     "zelashsclutchitems:diamond_hammer",
-    "zelashsclutchitems:netherite_hammer"
+    "zelashsclutchitems:netherite_hammer",
+    "zelashsclutchitems:stone_paxel",
+    "zelashsclutchitems:iron_paxel",
+    "zelashsclutchitems:golden_paxel",
+    "zelashsclutchitems:diamond_paxel",
+    "zelashsclutchitems:netherite_paxel"
   ]
 }

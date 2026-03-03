@@ -29,5 +29,7 @@
   "item.zelashsclutchitems.iron_paxel": "Iron Paxel",
   "item.zelashsclutchitems.golden_paxel": "Golden Paxel",
   "item.zelashsclutchitems.diamond_paxel": "Diamond Paxel",
-  "item.zelashsclutchitems.netherite_paxel": "Netherite Paxel"
+  "item.zelashsclutchitems.netherite_paxel": "Netherite Paxel",
+
+  "block.zelashsclutchitems.elevator": "Elevator"
 }

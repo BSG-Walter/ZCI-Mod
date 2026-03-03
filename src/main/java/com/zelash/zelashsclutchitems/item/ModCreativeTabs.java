@@ -32,6 +32,7 @@ public class ModCreativeTabs {
                         output.accept(ModItems.NETHERITE_PAXEL.get());
                         output.accept(ModItems.XP_TOME.get());
                         output.accept(ModItems.LARGE_XP_TOME.get());
+                        output.accept(ModItems.ELEVATOR.get());
                     })
                     .build()
     );

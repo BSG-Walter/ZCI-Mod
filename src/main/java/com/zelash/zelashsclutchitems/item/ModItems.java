@@ -2,7 +2,9 @@ package com.zelash.zelashsclutchitems.item;
 
 import com.zelash.zelashsclutchitems.ZelashsClutchItems;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.PickaxeItem;
+import com.zelash.zelashsclutchitems.block.ModBlocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -44,6 +46,8 @@ public class ModItems {
             () -> new XPTomeItem(new Item.Properties().stacksTo(1), com.zelash.zelashsclutchitems.Config.XPTOME_MAX_XP));
     public static final DeferredItem<Item> LARGE_XP_TOME = ITEMS.register("large_xp_tome",
             () -> new XPTomeItem(new Item.Properties().stacksTo(1), com.zelash.zelashsclutchitems.Config.LARGE_XPTOME_MAX_XP));
+
+    public static final DeferredItem<BlockItem> ELEVATOR = ITEMS.registerSimpleBlockItem("elevator", ModBlocks.ELEVATOR);
 
     public static void register (IEventBus eventBus){
         ITEMS.register(eventBus);
