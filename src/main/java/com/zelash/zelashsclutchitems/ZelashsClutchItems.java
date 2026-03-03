@@ -3,6 +3,7 @@ package com.zelash.zelashsclutchitems;
 import com.zelash.zelashsclutchitems.item.ModCreativeTabs;
 import com.zelash.zelashsclutchitems.item.ModDataComponentTypes;
 import com.zelash.zelashsclutchitems.item.ModItems;
+import com.zelash.zelashsclutchitems.block.ModBlocks;
 import com.zelash.zelashsclutchitems.recipe.ModRecipes;
 import org.slf4j.Logger;
 
@@ -28,6 +29,7 @@ public class ZelashsClutchItems {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
         ModDataComponentTypes.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
