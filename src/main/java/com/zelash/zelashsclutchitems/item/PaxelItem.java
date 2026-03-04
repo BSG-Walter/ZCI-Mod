@@ -21,6 +21,10 @@ import net.neoforged.neoforge.common.ItemAbility;
 
 public class PaxelItem extends DiggerItem {
 
+    public PaxelItem(Tier tier, TagKey<Block> mineable) {
+        super(tier, mineable, new Item.Properties().attributes(DiggerItem.createAttributes(tier, 4.0F, -2.8F)));
+    }
+
     public PaxelItem(Tier tier, TagKey<Block> mineable, Item.Properties properties) {
         super(tier, mineable, properties);
     }

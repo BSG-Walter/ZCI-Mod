@@ -28,4 +28,9 @@ public class ZelashsClutchItemsClient {
         ZelashsClutchItems.LOGGER.info("HELLO FROM CLIENT SETUP");
         ZelashsClutchItems.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
     }
+
+    @SubscribeEvent
+    static void registerScreens(net.neoforged.neoforge.client.event.RegisterMenuScreensEvent event) {
+        event.register(com.zelash.zelashsclutchitems.menu.ModMenus.CRAFTING_STICK_MENU.get(), net.minecraft.client.gui.screens.inventory.CraftingScreen::new);
+    }
 }

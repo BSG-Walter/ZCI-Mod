@@ -4,6 +4,7 @@ import com.zelash.zelashsclutchitems.item.ModCreativeTabs;
 import com.zelash.zelashsclutchitems.item.ModDataComponentTypes;
 import com.zelash.zelashsclutchitems.item.ModItems;
 import com.zelash.zelashsclutchitems.block.ModBlocks;
+import com.zelash.zelashsclutchitems.menu.ModMenus;
 import com.zelash.zelashsclutchitems.recipe.ModRecipes;
 import org.slf4j.Logger;
 
@@ -31,6 +32,7 @@ public class ZelashsClutchItems {
 
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
+        ModMenus.register(modEventBus);
         ModDataComponentTypes.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
         ModRecipes.register(modEventBus);
