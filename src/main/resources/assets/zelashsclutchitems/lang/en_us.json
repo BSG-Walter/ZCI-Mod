@@ -24,5 +24,7 @@
   "item.zelashsclutchitems.diamond_paxel": "Diamond Paxel",
   "item.zelashsclutchitems.netherite_paxel": "Netherite Paxel",
   "block.zelashsclutchitems.elevator": "Elevator",
-  "item.zelashsclutchitems.crafting_stick": "Crafting on a Stick"
+  "item.zelashsclutchitems.crafting_stick": "Crafting on a Stick",
+  "key.zelashsclutchitems.open_crafting_stick": "Open Crafting Stick",
+  "key.categories.zelashsclutchitems": "Zelash's Clutch Items"
 }

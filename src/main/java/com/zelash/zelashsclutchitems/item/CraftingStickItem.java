@@ -20,11 +20,24 @@ public class CraftingStickItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         if (!level.isClientSide()) {
-            player.openMenu(new SimpleMenuProvider(
-                (containerId, playerInventory, playerEntity) -> new ItemCraftingMenu(containerId, playerInventory),
-                CONTAINER_TITLE
-            ));
+            openCraftingMenu(player);
         }
         return InteractionResultHolder.sidedSuccess(player.getItemInHand(usedHand), level.isClientSide());
+    }
+    public static void openCraftingMenu(Player player) {
+        player.openMenu(new SimpleMenuProvider(
+            (containerId, playerInventory, playerEntity) -> new ItemCraftingMenu(containerId, playerInventory),
+            CONTAINER_TITLE
+        ));
+    }
+
+    public static boolean hasCraftingStickInHotbar(Player player) {
+        for (int i = 0; i < 9; i++) {
+            ItemStack stack = player.getInventory().getItem(i);
+            if (stack.getItem() instanceof CraftingStickItem) {
+                return true;
+            }
+        }
+        return false;
     }
 }

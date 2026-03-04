@@ -13,11 +13,40 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderHighlightEvent;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.minecraft.world.entity.player.Inventory;
+import com.zelash.zelashsclutchitems.network.OpenCraftingStickPayload;
+import net.neoforged.neoforge.network.PacketDistributor;
+import com.zelash.zelashsclutchitems.item.CraftingStickItem;
+import net.neoforged.neoforge.client.event.ScreenEvent;
+import com.mojang.blaze3d.platform.InputConstants;
 
 import java.util.List;
 
 @EventBusSubscriber(modid = ZelashsClutchItems.MODID, value = Dist.CLIENT)
 public class ClientModEvents {
+
+    @SubscribeEvent
+    public static void onClientTick(ClientTickEvent.Post event) {
+        if (Minecraft.getInstance().player == null) return;
+        
+        while (ModKeyMappings.OPEN_CRAFTING_STICK.get().consumeClick()) {
+            Player player = Minecraft.getInstance().player;
+            if (CraftingStickItem.hasCraftingStickInHotbar(player)) {
+                PacketDistributor.sendToServer(new OpenCraftingStickPayload());
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onScreenKeyPressed(ScreenEvent.KeyPressed.Pre event) {
+        if (event.getScreen() instanceof net.minecraft.client.gui.screens.inventory.CraftingScreen) {
+            if (ModKeyMappings.OPEN_CRAFTING_STICK.get().matches(event.getKeyCode(), event.getScanCode())) {
+                event.getScreen().onClose();
+                event.setCanceled(true);
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void onBlockHighlight(RenderHighlightEvent.Block event) {
