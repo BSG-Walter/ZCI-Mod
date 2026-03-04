@@ -1,25 +1,42 @@
+# Zelash's Clutch Items (ZCI)
 
-Installation information
-=======
+**Zelash's Clutch Items** is a utility mod for **Minecraft 1.21.1 (NeoForge)** that adds several highly useful items and blocks to improve your survival experience, reduce grinding, and optimize exploration and building.
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+## 🌟 Features
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
+### 🔨 Hammers
+Hammers are upgraded mining tools that allow you to mine blocks in an area, saving time when clearing out large spaces.
+* **Tiers:** Stone, Iron, Golden, Diamond, Netherite.
+* **Variable Mining Area:** By default, Hammers mine a 3x3 area. You can **Crouch + Right-Click** to toggle the mining radius (3x3 -> 5x5 -> 7x7).
+* **Mining Preview:** The mod highlights the exact blocks that will be broken, so you always know what you're mining!
 
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
+### ⛏️ Paxels
+Tired of carrying a Pickaxe, an Axe, and a Shovel? The Paxel combines all three into one universal tool!
+* **Tiers:** Stone, Iron, Golden, Diamond, Netherite.
+* **All-in-One:** Mines stone, dirt, wood, and everything in between.
+* **Special Actions:** You can use the Paxel to strip logs, scrape/wax copper, and flatten grass into dirt paths just like the standard tools.
 
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
+### 📖 XP Tomes
+Store your hard-earned experience safely so you don't lose it upon death!
+* **XP Tome:** Stores up to 30 experience levels (1395 XP).
+* **Large XP Tome:** Stores 10x the amount of a standard tome (13950 XP).
+* **Usage:** 
+  * **Crouch + Right-Click** to store your current XP into the tome.
+  * **Right-Click** to retrieve XP from the tome.
+* **High Configurability:** In the mod's configuration file, you can change the max capacities, choose whether XP is transferred one level at a time or all at once, and even set an "XP retrieval cost" percentage.
 
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+### ⬆️ Elevators
+Navigate your multi-level bases instantly with Elevator blocks!
+* **Usage:** Place Elevators directly above or below each other (up to 16 blocks apart).
+* **Stand and Go:** Simply stand on the Elevator and **Jump** to teleport to the floor above, or **Crouch** to teleport to the floor below.
+
+## ⚙️ Configuration
+ZCI includes a comprehensive config file that allows server and modpack creators to tweak various parameters, especially the XP Tomes' behavior, to perfectly fit their desired balance.
+
+## 📥 Installation
+1. Download [NeoForge](https://neoforged.net/) for Minecraft 1.21.1.
+2. Drop the `Zelash's Clutch Items` `.jar` file into your `.minecraft/mods` folder.
+3. Enjoy!
+
+---
+*Created by Zelash.*
