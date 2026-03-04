@@ -7,13 +7,8 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
-import com.zelash.zelashsclutchitems.item.ModItems;
 import com.zelash.zelashsclutchitems.item.CraftingStickItem;
-import com.zelash.zelashsclutchitems.menu.ItemCraftingMenu;
 
 public record OpenCraftingStickPayload() implements CustomPacketPayload {
     public static final CustomPacketPayload.Type<OpenCraftingStickPayload> TYPE = 

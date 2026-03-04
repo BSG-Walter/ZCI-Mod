@@ -4,7 +4,6 @@ import com.zelash.zelashsclutchitems.ZelashsClutchItems;
 import com.zelash.zelashsclutchitems.item.HammerItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.BlockHitResult;
@@ -14,14 +13,10 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderHighlightEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
-import net.minecraft.world.entity.player.Inventory;
 import com.zelash.zelashsclutchitems.network.OpenCraftingStickPayload;
 import net.neoforged.neoforge.network.PacketDistributor;
 import com.zelash.zelashsclutchitems.item.CraftingStickItem;
 import net.neoforged.neoforge.client.event.ScreenEvent;
-import com.mojang.blaze3d.platform.InputConstants;
-
-import java.util.List;
 
 @EventBusSubscriber(modid = ZelashsClutchItems.MODID, value = Dist.CLIENT)
 public class ClientModEvents {

@@ -1,11 +1,7 @@
 package com.zelash.zelashsclutchitems.item;
 
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.SimpleTier;
 
 public class ModTiers {
