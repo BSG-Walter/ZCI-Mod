@@ -1,7 +1,6 @@
 package com.zelash.zelashsclutchitems.event;
 
 import com.zelash.zelashsclutchitems.ZelashsClutchItems;
-import com.zelash.zelashsclutchitems.block.ModBlocks;
 import com.zelash.zelashsclutchitems.block.custom.ElevatorBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
