@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "zelashsclutchitems:block/purple_elevator"
+  }
+}
