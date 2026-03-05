@@ -1,7 +1,7 @@
 package com.zelash.zelashsclutchitems.event;
 
 import com.zelash.zelashsclutchitems.ZelashsClutchItems;
-import com.zelash.zelashsclutchitems.block.ModBlocks;
+import com.zelash.zelashsclutchitems.block.custom.ElevatorBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -29,16 +29,16 @@ public class ModEvents {
         if (event.getEntity() instanceof ServerPlayer player) {
             Level level = player.level();
             BlockPos pos = player.blockPosition();
-            
+
             // Player might be slightly above the block
             BlockState stateBelow = level.getBlockState(pos.below());
             BlockState stateAtFeet = level.getBlockState(pos);
 
             // Check what block the player is standing on
             BlockPos targetBlockPos = null;
-            if (stateBelow.is(ModBlocks.ELEVATOR.get())) {
+            if (stateBelow.getBlock() instanceof ElevatorBlock) {
                 targetBlockPos = pos.below();
-            } else if (stateAtFeet.is(ModBlocks.ELEVATOR.get())) {
+            } else if (stateAtFeet.getBlock() instanceof ElevatorBlock) {
                 targetBlockPos = pos;
             }
 
@@ -60,14 +60,14 @@ public class ModEvents {
                 // The player just started crouching this tick
                 Level level = player.level();
                 BlockPos pos = player.blockPosition();
-                
+
                 BlockState stateBelow = level.getBlockState(pos.below());
                 BlockState stateAtFeet = level.getBlockState(pos);
 
                 BlockPos targetBlockPos = null;
-                if (stateBelow.is(ModBlocks.ELEVATOR.get())) {
+                if (stateBelow.getBlock() instanceof ElevatorBlock) {
                     targetBlockPos = pos.below();
-                } else if (stateAtFeet.is(ModBlocks.ELEVATOR.get())) {
+                } else if (stateAtFeet.getBlock() instanceof ElevatorBlock) {
                     targetBlockPos = pos;
                 }
 
@@ -88,34 +88,40 @@ public class ModEvents {
         for (int i = minDistance; i <= maxDistance; i++) {
             int yOffset = i * direction;
             BlockPos checkPos = elevatorPos.relative(net.minecraft.core.Direction.Axis.Y, yOffset);
-            
+
             // Prevention of checking outside build height limits
             if (level.isOutsideBuildHeight(checkPos)) {
                 break;
             }
 
             BlockState state = level.getBlockState(checkPos);
-            if (state.is(ModBlocks.ELEVATOR.get())) {
+            if (state.getBlock() instanceof ElevatorBlock) {
+                if (com.zelash.zelashsclutchitems.Config.REQUIRE_SAME_COLOR_ELEVATOR.get()) {
+                    BlockState sourceState = level.getBlockState(elevatorPos);
+                    if (!state.is(sourceState.getBlock())) {
+                        continue; // Skip this elevator and keep looking
+                    }
+                }
+
                 // Found next elevator
                 // Check if there is space above it for the player
                 BlockPos destPos1 = checkPos.above();
                 BlockPos destPos2 = checkPos.above(2);
-                
+
                 if (level.getBlockState(destPos1).getCollisionShape(level, destPos1).isEmpty() &&
-                    level.getBlockState(destPos2).getCollisionShape(level, destPos2).isEmpty()) {
+                        level.getBlockState(destPos2).getCollisionShape(level, destPos2).isEmpty()) {
 
                     player.connection.teleport(
                             player.getX(),
                             checkPos.getY() + 1.0,
                             player.getZ(),
                             player.getYRot(),
-                            player.getXRot()
-                    );
-                    
+                            player.getXRot());
+
                     // Reset velocity and fall distance just in case
                     player.setDeltaMovement(0, 0, 0);
                     player.resetFallDistance();
-                    
+
                     // Play enderman teleport sound
                     level.playSound(null, checkPos, SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1.0F, 1.0F);
                     break;

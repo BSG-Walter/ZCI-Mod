@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#O#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:gray_wool"
+    },
+    "O": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "result": {
+    "id": "zelashsclutchitems:gray_elevator",
+    "count": 1
+  }
+}

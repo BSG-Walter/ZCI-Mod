@@ -1,6 +1,21 @@
 {
     "replace": false,
     "values": [
-        "zelashsclutchitems:elevator"
+        "zelashsclutchitems:white_elevator",
+        "zelashsclutchitems:orange_elevator",
+        "zelashsclutchitems:magenta_elevator",
+        "zelashsclutchitems:light_blue_elevator",
+        "zelashsclutchitems:yellow_elevator",
+        "zelashsclutchitems:lime_elevator",
+        "zelashsclutchitems:pink_elevator",
+        "zelashsclutchitems:gray_elevator",
+        "zelashsclutchitems:light_gray_elevator",
+        "zelashsclutchitems:cyan_elevator",
+        "zelashsclutchitems:purple_elevator",
+        "zelashsclutchitems:blue_elevator",
+        "zelashsclutchitems:brown_elevator",
+        "zelashsclutchitems:green_elevator",
+        "zelashsclutchitems:red_elevator",
+        "zelashsclutchitems:black_elevator"
     ]
 }
