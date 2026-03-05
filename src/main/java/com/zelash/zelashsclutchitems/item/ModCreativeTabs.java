@@ -30,6 +30,9 @@ public class ModCreativeTabs {
                         output.accept(ModItems.GOLDEN_PAXEL.get());
                         output.accept(ModItems.DIAMOND_PAXEL.get());
                         output.accept(ModItems.NETHERITE_PAXEL.get());
+
+                        output.accept(ModItems.CRAFTING_STICK.get());
+
                         output.accept(ModItems.XP_TOME.get());
                         output.accept(ModItems.LARGE_XP_TOME.get());
                         output.accept(ModItems.ELEVATOR.get());

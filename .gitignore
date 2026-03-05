@@ -26,3 +26,5 @@ docs
 media
 
 repo
+/.agents
+/.vscode

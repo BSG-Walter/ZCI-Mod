@@ -3,7 +3,6 @@ package com.zelash.zelashsclutchitems.item;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,6 +19,10 @@ import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 
 public class PaxelItem extends DiggerItem {
+
+    public PaxelItem(Tier tier, TagKey<Block> mineable) {
+        super(tier, mineable, new Item.Properties().attributes(DiggerItem.createAttributes(tier, 4.0F, -2.8F)));
+    }
 
     public PaxelItem(Tier tier, TagKey<Block> mineable, Item.Properties properties) {
         super(tier, mineable, properties);

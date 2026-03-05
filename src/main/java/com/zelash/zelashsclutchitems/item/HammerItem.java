@@ -40,7 +40,7 @@ public class HammerItem extends PickaxeItem {
     @Override
     public net.minecraft.world.InteractionResultHolder<ItemStack> use(Level level, Player player, net.minecraft.world.InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        if (player.isCrouching() && !level.isClientSide) {
+        if (player.isCrouching()) {
             int currentRadius = getRadius(player);
             int newRadius = currentRadius + 1;
             if (newRadius > 3) {
@@ -49,9 +49,11 @@ public class HammerItem extends PickaxeItem {
             
             PLAYER_RADII.put(player.getUUID(), newRadius);
             
-            String area = (newRadius * 2 + 1) + "x" + (newRadius * 2 + 1);
-            Utils.logDebug("Hammer area changed for player " + player.getName().getString() + " to " + area);
-            player.displayClientMessage(net.minecraft.network.chat.Component.translatable("message.zelashsclutchitems.hammer_area_changed", area), true);
+            if (!level.isClientSide) {
+                String area = (newRadius * 2 + 1) + "x" + (newRadius * 2 + 1);
+                Utils.logDebug("Hammer area changed for player " + player.getName().getString() + " to " + area);
+                player.displayClientMessage(net.minecraft.network.chat.Component.translatable("message.zelashsclutchitems.hammer_area_changed", area), true);
+            }
             
             return net.minecraft.world.InteractionResultHolder.success(stack);
         }

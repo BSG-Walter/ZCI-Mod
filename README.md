@@ -30,6 +30,11 @@ Navigate your multi-level bases instantly with Elevator blocks!
 * **Usage:** Place Elevators directly above or below each other (up to 16 blocks apart).
 * **Stand and Go:** Simply stand on the Elevator and **Jump** to teleport to the floor above, or **Crouch** to teleport to the floor below.
 
+### 🥢 Crafting on a Stick
+Access a 3x3 crafting grid anywhere, anytime!
+* **Crafting:** Combine a Crafting Table and a Stick in the crafting grid.
+* **Usage:** Simply Right-Click to open a fully functional, portable crafting menu.
+
 ## ⚙️ Configuration
 ZCI includes a comprehensive config file that allows server and modpack creators to tweak various parameters, especially the XP Tomes' behavior, to perfectly fit their desired balance.
 
