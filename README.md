@@ -27,7 +27,7 @@ Store your hard-earned experience safely so you don't lose it upon death!
 
 ### ⬆️ Elevators
 Navigate your multi-level bases instantly with Elevator blocks!
-* **Usage:** Place Elevators directly above or below each other (up to 16 blocks apart).
+* **Usage:** Place Elevators directly above or below each other (up to 32 blocks default, configurable).
 * **Stand and Go:** Simply stand on the Elevator and **Jump** to teleport to the floor above, or **Crouch** to teleport to the floor below.
 * **Colors:** There are 16 colored variants! You can configure elevators to only connect to elevators of the **exact same color** directly in the mod config (defaults to `false`, allowing mixed colors).
 
@@ -43,6 +43,10 @@ ZCI includes a comprehensive config file that allows server and modpack creators
 1. Download [NeoForge](https://neoforged.net/) for Minecraft 1.21.1.
 2. Drop the `Zelash's Clutch Items` `.jar` file into your `.minecraft/mods` folder.
 3. Enjoy!
+
+Note: this readme and some of the code was ai generated, the logo and all the pixel art inside the game was made by me based on minecraft's assets
+
+feel free to ask for similar items from other mods, or even an original one you think it should be in minecraft!
 
 ---
 *Created by Zelash.*

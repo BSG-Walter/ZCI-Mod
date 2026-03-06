@@ -38,7 +38,8 @@ public class HammerItem extends PickaxeItem {
     }
 
     @Override
-    public net.minecraft.world.InteractionResultHolder<ItemStack> use(Level level, Player player, net.minecraft.world.InteractionHand hand) {
+    public net.minecraft.world.InteractionResultHolder<ItemStack> use(Level level, Player player,
+            net.minecraft.world.InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if (player.isCrouching()) {
             int currentRadius = getRadius(player);
@@ -46,15 +47,16 @@ public class HammerItem extends PickaxeItem {
             if (newRadius > 3) {
                 newRadius = 1; // Loop back to 3x3
             }
-            
+
             PLAYER_RADII.put(player.getUUID(), newRadius);
-            
+
             if (!level.isClientSide) {
                 String area = (newRadius * 2 + 1) + "x" + (newRadius * 2 + 1);
                 Utils.logDebug("Hammer area changed for player " + player.getName().getString() + " to " + area);
-                player.displayClientMessage(net.minecraft.network.chat.Component.translatable("message.zelashsclutchitems.hammer_area_changed", area), true);
+                player.displayClientMessage(net.minecraft.network.chat.Component
+                        .translatable("message.zelashsclutchitems.hammer_area_changed", area), true);
             }
-            
+
             return net.minecraft.world.InteractionResultHolder.success(stack);
         }
         return super.use(level, player, hand);
@@ -65,7 +67,7 @@ public class HammerItem extends PickaxeItem {
         if (entityLiving instanceof ServerPlayer player) {
             if (!player.isCrouching()) {
                 // Use pick to determine hit face
-                HitResult trace = player.pick(20.0D, 0.0F, false);
+                HitResult trace = player.pick(player.blockInteractionRange(), 0.0F, false);
                 if (trace.getType() == HitResult.Type.BLOCK) {
                     BlockHitResult blockTrace = (BlockHitResult) trace;
                     Direction face = blockTrace.getDirection();
@@ -76,8 +78,10 @@ public class HammerItem extends PickaxeItem {
         return super.mineBlock(stack, level, state, pos, entityLiving);
     }
 
-    private void breakArea(ServerPlayer player, Level level, BlockPos center, Direction face, ItemStack tool, int radius) {
-        if (level.isClientSide) return;
+    private void breakArea(ServerPlayer player, Level level, BlockPos center, Direction face, ItemStack tool,
+            int radius) {
+        if (level.isClientSide)
+            return;
 
         Direction.Axis axis = face.getAxis();
         int minX = axis == Direction.Axis.X ? 0 : -radius;
@@ -90,15 +94,20 @@ public class HammerItem extends PickaxeItem {
         for (int x = minX; x <= maxX; x++) {
             for (int y = minY; y <= maxY; y++) {
                 for (int z = minZ; z <= maxZ; z++) {
-                    if (x == 0 && y == 0 && z == 0) continue; // Original block handled by normal breaking
+                    if (x == 0 && y == 0 && z == 0)
+                        continue; // Original block handled by normal breaking
 
                     BlockPos targetPos = center.offset(x, y, z);
                     BlockState targetState = level.getBlockState(targetPos);
 
                     if (!targetState.isAir() && targetState.getDestroySpeed(level, targetPos) >= 0) {
                         if (tool.isCorrectToolForDrops(targetState)) {
-                            level.destroyBlock(targetPos, true, player);
-                            tool.hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
+                            net.neoforged.neoforge.event.level.BlockEvent.BreakEvent event = new net.neoforged.neoforge.event.level.BlockEvent.BreakEvent(
+                                    level, targetPos, targetState, player);
+                            if (!net.neoforged.neoforge.common.NeoForge.EVENT_BUS.post(event).isCanceled()) {
+                                level.destroyBlock(targetPos, true, player);
+                                tool.hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
+                            }
                         }
                     }
                 }
@@ -108,12 +117,12 @@ public class HammerItem extends PickaxeItem {
 
     public static List<BlockPos> getBlocksToBeDestroyed(int radius, BlockPos centerPos, ServerPlayer player) {
         List<BlockPos> positions = new ArrayList<>();
-        HitResult trace = player.pick(20.0D, 0.0F, false);
+        HitResult trace = player.pick(player.blockInteractionRange(), 0.0F, false);
         if (trace.getType() == HitResult.Type.BLOCK) {
             BlockHitResult blockTrace = (BlockHitResult) trace;
             Direction face = blockTrace.getDirection();
             Direction.Axis axis = face.getAxis();
-            
+
             int minX = axis == Direction.Axis.X ? 0 : -radius;
             int maxX = axis == Direction.Axis.X ? 0 : radius;
             int minY = axis == Direction.Axis.Y ? 0 : -radius;

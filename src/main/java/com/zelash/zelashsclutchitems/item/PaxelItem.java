@@ -31,8 +31,8 @@ public class PaxelItem extends DiggerItem {
     @Override
     public boolean canPerformAction(ItemStack stack, ItemAbility toolAction) {
         return net.neoforged.neoforge.common.ItemAbilities.DEFAULT_AXE_ACTIONS.contains(toolAction) ||
-               net.neoforged.neoforge.common.ItemAbilities.DEFAULT_SHOVEL_ACTIONS.contains(toolAction) ||
-               net.neoforged.neoforge.common.ItemAbilities.DEFAULT_PICKAXE_ACTIONS.contains(toolAction);
+                net.neoforged.neoforge.common.ItemAbilities.DEFAULT_SHOVEL_ACTIONS.contains(toolAction) ||
+                net.neoforged.neoforge.common.ItemAbilities.DEFAULT_PICKAXE_ACTIONS.contains(toolAction);
     }
 
     @Override
@@ -43,60 +43,40 @@ public class PaxelItem extends DiggerItem {
         BlockState blockstate = level.getBlockState(blockpos);
         ItemStack itemstack = context.getItemInHand();
 
-        // Check Shovel flatten First
-        BlockState modifiedState = blockstate.getToolModifiedState(context, ItemAbilities.SHOVEL_FLATTEN, false);
-        if (modifiedState != null) {
-            level.playSound(player, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
-            if (!level.isClientSide) {
-                level.setBlock(blockpos, modifiedState, 11);
-                if (player != null) {
-                    itemstack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
+        // List of abilities to test in order of priority
+        ItemAbility[] abilities = {
+                ItemAbilities.SHOVEL_FLATTEN,
+                ItemAbilities.AXE_STRIP,
+                ItemAbilities.AXE_SCRAPE,
+                ItemAbilities.AXE_WAX_OFF
+        };
+
+        for (ItemAbility ability : abilities) {
+            BlockState modifiedState = blockstate.getToolModifiedState(context, ability, false);
+            if (modifiedState != null) {
+                // Determine the correct sound/event based on the successful ability
+                if (ability == ItemAbilities.SHOVEL_FLATTEN) {
+                    level.playSound(player, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
+                } else if (ability == ItemAbilities.AXE_STRIP) {
+                    level.playSound(player, blockpos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+                } else if (ability == ItemAbilities.AXE_SCRAPE) {
+                    level.playSound(player, blockpos, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    level.levelEvent(player, 3005, blockpos, 0);
+                } else if (ability == ItemAbilities.AXE_WAX_OFF) {
+                    level.playSound(player, blockpos, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    level.levelEvent(player, 3004, blockpos, 0);
                 }
-            }
-            return InteractionResult.sidedSuccess(level.isClientSide);
-        }
-        
-        // Check Axe strip
-        modifiedState = blockstate.getToolModifiedState(context, ItemAbilities.AXE_STRIP, false);
-        if (modifiedState != null) {
-            level.playSound(player, blockpos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
-            if (!level.isClientSide) {
-                level.setBlock(blockpos, modifiedState, 11);
-                if (player != null) {
-                    itemstack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
+
+                if (!level.isClientSide) {
+                    level.setBlock(blockpos, modifiedState, 11);
+                    if (player != null) {
+                        itemstack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
+                    }
                 }
+                return InteractionResult.sidedSuccess(level.isClientSide);
             }
-            return InteractionResult.sidedSuccess(level.isClientSide);
-        }
-        
-        // Check Axe scrape
-        modifiedState = blockstate.getToolModifiedState(context, ItemAbilities.AXE_SCRAPE, false);
-        if (modifiedState != null) {
-            level.playSound(player, blockpos, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
-            level.levelEvent(player, 3005, blockpos, 0);
-            if (!level.isClientSide) {
-                level.setBlock(blockpos, modifiedState, 11);
-                if (player != null) {
-                    itemstack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
-                }
-            }
-            return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        // Check Axe wax off
-        modifiedState = blockstate.getToolModifiedState(context, ItemAbilities.AXE_WAX_OFF, false);
-        if (modifiedState != null) {
-            level.playSound(player, blockpos, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
-            level.levelEvent(player, 3004, blockpos, 0);
-            if (!level.isClientSide) {
-                level.setBlock(blockpos, modifiedState, 11);
-                if (player != null) {
-                    itemstack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
-                }
-            }
-            return InteractionResult.sidedSuccess(level.isClientSide);
-        }
-        
         return InteractionResult.PASS;
     }
 }

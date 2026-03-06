@@ -24,6 +24,38 @@ public class XPTomeItem extends Item {
         this.maxCapacitySupplier = maxCapacitySupplier;
     }
 
+    // Replaces player.giveExperiencePoints with a precise total XP calculator to
+    // avoid rounding and level bugs
+    private void addPlayerXP(Player player, int amount) {
+        int targetXp = getTotalXp(player) + amount;
+        if (targetXp < 0)
+            targetXp = 0;
+
+        player.totalExperience = targetXp;
+        player.experienceLevel = 0;
+        player.experienceProgress = 0;
+
+        while (targetXp > 0) {
+            int xpToNext = player.getXpNeededForNextLevel();
+            if (targetXp >= xpToNext) {
+                targetXp -= xpToNext;
+                player.experienceLevel++;
+            } else {
+                player.experienceProgress = (float) targetXp / (float) xpToNext;
+                targetXp = 0;
+            }
+        }
+    }
+
+    private int getTotalXp(Player player) {
+        int xp = 0;
+        for (int i = 0; i < player.experienceLevel; i++) {
+            xp += getXpNeededForNextLevel(i);
+        }
+        xp += Math.round(player.experienceProgress * player.getXpNeededForNextLevel());
+        return xp;
+    }
+
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
@@ -38,19 +70,22 @@ public class XPTomeItem extends Item {
                     int xpToStore = 0;
 
                     if (Config.XPTOME_TRANSFER_ONE_LEVEL_AT_A_TIME.get()) {
-                        int currentLevelProgress = Math.round(player.experienceProgress * player.getXpNeededForNextLevel());
-                        xpToStore = currentLevelProgress > 0 ? currentLevelProgress : getXpNeededForNextLevel(player.experienceLevel - 1);
+                        int currentLevelProgress = Math
+                                .round(player.experienceProgress * player.getXpNeededForNextLevel());
+                        xpToStore = currentLevelProgress > 0 ? currentLevelProgress
+                                : getXpNeededForNextLevel(player.experienceLevel - 1);
                     } else {
-                        xpToStore = player.totalExperience;
+                        xpToStore = getTotalXp(player);
                     }
 
                     int availableSpace = maxCapacity - storedXp;
                     int actualStored = Math.min(xpToStore, availableSpace);
 
                     if (actualStored > 0) {
-                        player.giveExperiencePoints(-actualStored);
+                        addPlayerXP(player, -actualStored);
                         itemStack.set(ModDataComponentTypes.STORED_XP, storedXp + actualStored);
-                        level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 0.5f, 1.0f);
+                        level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP,
+                                SoundSource.PLAYERS, 0.5f, 1.0f);
                         return InteractionResultHolder.success(itemStack);
                     }
                 }
@@ -61,19 +96,22 @@ public class XPTomeItem extends Item {
 
                     if (Config.XPTOME_TRANSFER_ONE_LEVEL_AT_A_TIME.get()) {
                         int currentLevelXpNeeded = player.getXpNeededForNextLevel();
-                        int missingForNextLevel = currentLevelXpNeeded - Math.round(player.experienceProgress * currentLevelXpNeeded);
-                        rawXpToExtract = Math.min(storedXp, missingForNextLevel > 0 ? missingForNextLevel : player.getXpNeededForNextLevel());
+                        int missingForNextLevel = currentLevelXpNeeded
+                                - Math.round(player.experienceProgress * currentLevelXpNeeded);
+                        rawXpToExtract = Math.min(storedXp,
+                                missingForNextLevel > 0 ? missingForNextLevel : player.getXpNeededForNextLevel());
                     }
 
                     double retrievalPercentage = Config.XPTOME_RETRIEVAL_PERCENTAGE.get();
                     int xpToGive = (int) Math.round(rawXpToExtract * retrievalPercentage);
 
                     if (xpToGive > 0) {
-                        player.giveExperiencePoints(xpToGive);
+                        addPlayerXP(player, xpToGive);
                     }
 
                     itemStack.set(ModDataComponentTypes.STORED_XP, storedXp - rawXpToExtract);
-                    level.playSound(null, player.blockPosition(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 0.5f, 1.0f);
+                    level.playSound(null, player.blockPosition(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 0.5f,
+                            1.0f);
                     return InteractionResultHolder.success(itemStack);
                 }
             }
@@ -93,12 +131,16 @@ public class XPTomeItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
+            TooltipFlag tooltipFlag) {
         int storedXp = stack.getOrDefault(ModDataComponentTypes.STORED_XP, 0);
         int maxCapacity = this.maxCapacitySupplier.get();
-        tooltipComponents.add(Component.translatable("tooltip.zelashsclutchitems.xp_tome.stored", storedXp, maxCapacity).withStyle(ChatFormatting.GREEN));
-        tooltipComponents.add(Component.translatable("tooltip.zelashsclutchitems.xp_tome.store_instruction").withStyle(ChatFormatting.GRAY));
-        tooltipComponents.add(Component.translatable("tooltip.zelashsclutchitems.xp_tome.retrieve_instruction").withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(Component.translatable("tooltip.zelashsclutchitems.xp_tome.stored", storedXp, maxCapacity)
+                .withStyle(ChatFormatting.GREEN));
+        tooltipComponents.add(Component.translatable("tooltip.zelashsclutchitems.xp_tome.store_instruction")
+                .withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(Component.translatable("tooltip.zelashsclutchitems.xp_tome.retrieve_instruction")
+                .withStyle(ChatFormatting.GRAY));
     }
 
     @Override
