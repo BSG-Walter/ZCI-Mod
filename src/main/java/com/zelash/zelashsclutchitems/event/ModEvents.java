@@ -30,17 +30,7 @@ public class ModEvents {
             Level level = player.level();
             BlockPos pos = player.blockPosition();
 
-            // Player might be slightly above the block
-            BlockState stateBelow = level.getBlockState(pos.below());
-            BlockState stateAtFeet = level.getBlockState(pos);
-
-            // Check what block the player is standing on
-            BlockPos targetBlockPos = null;
-            if (stateBelow.getBlock() instanceof ElevatorBlock) {
-                targetBlockPos = pos.below();
-            } else if (stateAtFeet.getBlock() instanceof ElevatorBlock) {
-                targetBlockPos = pos;
-            }
+            BlockPos targetBlockPos = getElevatorPos(level, pos);
 
             if (targetBlockPos != null) {
                 teleportElevator(player, level, targetBlockPos, true);
@@ -61,15 +51,7 @@ public class ModEvents {
                 Level level = player.level();
                 BlockPos pos = player.blockPosition();
 
-                BlockState stateBelow = level.getBlockState(pos.below());
-                BlockState stateAtFeet = level.getBlockState(pos);
-
-                BlockPos targetBlockPos = null;
-                if (stateBelow.getBlock() instanceof ElevatorBlock) {
-                    targetBlockPos = pos.below();
-                } else if (stateAtFeet.getBlock() instanceof ElevatorBlock) {
-                    targetBlockPos = pos;
-                }
+                BlockPos targetBlockPos = getElevatorPos(level, pos);
 
                 if (targetBlockPos != null) {
                     teleportElevator(serverPlayer, level, targetBlockPos, false);
@@ -80,9 +62,21 @@ public class ModEvents {
         }
     }
 
+    private static BlockPos getElevatorPos(Level level, BlockPos pos) {
+        BlockState stateBelow = level.getBlockState(pos.below());
+        BlockState stateAtFeet = level.getBlockState(pos);
+
+        if (stateBelow.getBlock() instanceof ElevatorBlock) {
+            return pos.below();
+        } else if (stateAtFeet.getBlock() instanceof ElevatorBlock) {
+            return pos;
+        }
+        return null;
+    }
+
     private static void teleportElevator(ServerPlayer player, Level level, BlockPos elevatorPos, boolean up) {
         int minDistance = 2; // Minimally 2 blocks of distance
-        int maxDistance = 16;
+        int maxDistance = com.zelash.zelashsclutchitems.Config.ELEVATOR_MAX_DISTANCE.get();
         int direction = up ? 1 : -1;
 
         for (int i = minDistance; i <= maxDistance; i++) {

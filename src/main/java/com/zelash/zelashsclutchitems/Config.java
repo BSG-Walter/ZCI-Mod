@@ -29,5 +29,9 @@ public class Config {
                         .comment("If enabled, players can only teleport between elevators of the exact same color. Default is false (any elevator connects to any elevator).")
                         .define("require_same_color_elevator", false);
 
+        public static final ModConfigSpec.IntValue ELEVATOR_MAX_DISTANCE = BUILDER
+                        .comment("Maximum distance in blocks an elevator can teleport the player vertically. Default is 32.")
+                        .defineInRange("elevator_max_distance", 32, 2, Integer.MAX_VALUE);
+
         static final ModConfigSpec SPEC = BUILDER.build();
 }
