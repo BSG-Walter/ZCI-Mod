@@ -37,6 +37,11 @@ Access a 3x3 crafting grid anywhere, anytime!
 * **Crafting:** Combine a Crafting Table and a Stick in the crafting grid.
 * **Usage:** Simply Right-Click to open a fully functional, portable crafting menu. You can also press C while having the crafting stick in your hotbar to open the crafting menu.
 
+### Mob lasso:
+Easily capture and transport friendly mobs around! With the superior mob lasso you can even capture villagers and hostile mobs.
+* **Usage:** Simply **Right-Click** a mob with a lasso in hand.
+* **Blacklist:** Mobs can be prevented from being captured by adding them to the entity type tag `zelashsclutchitems:mob_lasso_blacklist`. To do this, create a datapack or use KubeJS/CraftTweaker to add the mob's registry name (e.g. `minecraft:vindicator`) to `data/zelashsclutchitems/tags/entity_type/mob_lasso_blacklist.json`.
+
 ### ⚙️ Configuration
 ZCI includes a config file that allows server and modpack creators to tweak various parameters to fit their desired experience, more parameters coming soon.
 

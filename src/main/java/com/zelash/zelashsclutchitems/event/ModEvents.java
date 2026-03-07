@@ -17,7 +17,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.LivingEntity;
-import com.zelash.zelashsclutchitems.item.MobLassoItem;
+import com.zelash.zelashsclutchitems.item.SuperiorMobLassoItem;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +32,7 @@ public class ModEvents {
     @SubscribeEvent
     public static void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
         ItemStack stack = event.getItemStack();
-        if (stack.getItem() instanceof MobLassoItem lassoItem) {
+        if (stack.getItem() instanceof SuperiorMobLassoItem lassoItem) {
             if (event.getTarget() instanceof LivingEntity livingTarget) {
                 // If it's a valid capture target, perform the capture and cancel the event
                 // so the entity's own interaction logic (like opening trading menu) doesn't
