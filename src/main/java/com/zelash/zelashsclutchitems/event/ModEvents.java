@@ -13,6 +13,11 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.LivingEntity;
+import com.zelash.zelashsclutchitems.item.SuperiorMobLassoItem;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +28,26 @@ public class ModEvents {
 
     // Keep track of players who were crouching in the previous tick
     private static final Map<UUID, Boolean> wasCrouching = new HashMap<>();
+
+    @SubscribeEvent
+    public static void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
+        ItemStack stack = event.getItemStack();
+        if (stack.getItem() instanceof SuperiorMobLassoItem lassoItem) {
+            if (event.getTarget() instanceof LivingEntity livingTarget) {
+                // If it's a valid capture target, perform the capture and cancel the event
+                // so the entity's own interaction logic (like opening trading menu) doesn't
+                // run.
+                if (lassoItem.canCapture(livingTarget, stack)) {
+                    InteractionResult result = lassoItem.useLasso(stack, event.getEntity(), livingTarget,
+                            event.getHand());
+                    if (result.consumesAction()) {
+                        event.setCancellationResult(result);
+                        event.setCanceled(true);
+                    }
+                }
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void onPlayerJump(LivingEvent.LivingJumpEvent event) {
