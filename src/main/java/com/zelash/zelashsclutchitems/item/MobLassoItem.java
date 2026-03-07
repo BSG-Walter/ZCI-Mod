@@ -33,7 +33,9 @@ public class MobLassoItem extends Item {
         super(properties);
     }
 
-    private boolean canCapture(LivingEntity entity) {
+    public boolean canCapture(LivingEntity entity, ItemStack stack) {
+        if (stack.has(DataComponents.ENTITY_DATA))
+            return false;
         if (entity.getType().is(ModTags.EntityTypes.MOB_LASSO_BLACKLIST))
             return false;
         if (!(entity instanceof Mob))
@@ -41,23 +43,15 @@ public class MobLassoItem extends Item {
         return true;
     }
 
-    @Override
-    public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity interactionTarget,
+    public InteractionResult useLasso(ItemStack stack, Player player, LivingEntity interactionTarget,
             InteractionHand usedHand) {
-        if (interactionTarget.level() instanceof ServerLevel serverLevel) {
 
-            // Cannot capture if already contains a mob
-            if (stack.has(DataComponents.ENTITY_DATA)) {
-                return InteractionResult.PASS;
-            }
+        Level level = interactionTarget.level();
+        if (level.isClientSide) {
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
 
-            if (!canCapture(interactionTarget)) {
-                return InteractionResult.PASS;
-            }
-
-            // Mob mob = (Mob) interactionTarget;
-
-            // Serialize mob data
+        if (level instanceof ServerLevel serverLevel) {
             CompoundTag tag = new CompoundTag();
             if (interactionTarget.save(tag)) {
                 stack.set(DataComponents.ENTITY_DATA, CustomData.of(tag));
@@ -66,7 +60,7 @@ public class MobLassoItem extends Item {
 
                 serverLevel.playSound(null, player.blockPosition(), SoundEvents.LEASH_KNOT_BREAK,
                         SoundSource.PLAYERS, 1.0F, 1.0F);
-                return InteractionResult.SUCCESS;
+                return InteractionResult.sidedSuccess(level.isClientSide);
             }
         }
         return InteractionResult.PASS;
