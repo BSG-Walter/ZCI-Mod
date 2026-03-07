@@ -10,6 +10,7 @@ Zelash's Clutch Items (or ZCI) is a utility mod that adds several highly useful 
 Hammers are upgraded mining tools that allow you to mine blocks in an area, saving time when clearing out large spaces.
 * **Tiers:** Stone, Iron, Golden, Diamond, Netherite.
 * **Variable Mining Area:** By default, Hammers mine a 3x3 area. You can **Crouch + Right-Click** to toggle the mining radius (3x3 -> 5x5 -> 7x7).
+* **Normal Mining:** If you **Crouch** while using the hammer, it will mine a 1x1 area.
 
 ### Paxels:
 Tired of carrying a Pickaxe, an Axe, and a Shovel? The Paxel combines all three into one universal tool!
@@ -40,7 +41,7 @@ Access a 3x3 crafting grid anywhere, anytime!
 ZCI includes a config file that allows server and modpack creators to tweak various parameters to fit their desired experience, more parameters coming soon.
 
 ---
-Note: this readme and a good chunk of the code was ai generated, the logo and all the pixel art inside the game was made by me based on minecraft's assets
+Note: a good chunk of the code was ai generated, the logo and all the pixel art inside the game was made by me based on minecraft's assets
 
 feel free to ask for similar items from other mods, or even an original one you think it should be in minecraft!
 

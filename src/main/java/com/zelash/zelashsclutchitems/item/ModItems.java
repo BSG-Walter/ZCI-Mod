@@ -52,6 +52,9 @@ public class ModItems {
         public static final DeferredItem<Item> CRAFTING_STICK = ITEMS.register("crafting_stick",
                         () -> new CraftingStickItem(new Item.Properties().stacksTo(1)));
 
+        public static final DeferredItem<Item> MOB_LASSO = ITEMS.register("mob_lasso",
+                        () -> new MobLassoItem(new Item.Properties().stacksTo(1)));
+
         public static final DeferredItem<BlockItem> WHITE_ELEVATOR = ITEMS.registerSimpleBlockItem("white_elevator",
                         ModBlocks.WHITE_ELEVATOR);
         public static final DeferredItem<BlockItem> ORANGE_ELEVATOR = ITEMS.registerSimpleBlockItem("orange_elevator",

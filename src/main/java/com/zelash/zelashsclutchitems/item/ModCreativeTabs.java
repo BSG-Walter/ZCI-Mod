@@ -33,6 +33,7 @@ public class ModCreativeTabs {
                         output.accept(ModItems.NETHERITE_PAXEL.get());
 
                         output.accept(ModItems.CRAFTING_STICK.get());
+                        output.accept(ModItems.MOB_LASSO.get());
 
                         output.accept(ModItems.XP_TOME.get());
                         output.accept(ModItems.LARGE_XP_TOME.get());
