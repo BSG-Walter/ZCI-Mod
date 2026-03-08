@@ -2,7 +2,7 @@
 
 yes, this mod basically ~~steals~~ borrow items and blocks from other mods, but i have a few ideas for original items coming soon
 
-Zelash's Clutch Items (or ZCI) is a utility mod that adds several highly useful items and blocks to improve your survival experience, reduce grinding, and optimize exploration and building.
+ZCI is a utility mod that adds several highly useful items and blocks to improve your survival experience, reduce grinding, and optimize exploration and building.
 
 # Features
 

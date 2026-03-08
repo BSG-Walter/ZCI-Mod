@@ -24,6 +24,7 @@ runs
 run-data
 docs
 media
+tools
 
 repo
 /.agents
